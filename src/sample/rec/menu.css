@@ -1,0 +1,21 @@
+.root{
+    -fx-background-image: url("/sample/rec/summerCamp.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 100%;
+    -fx-background-position: center center;
+}
+.text{
+    -fx-font-family: "8-bit Operator+ 8 Bold";
+}
+#title{
+    -fx-font-size: 50pt;
+    -fx-text-fill: white;
+}
+.button{
+    -fx-font-size: 20pt;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+.button:hover {
+    -fx-text-fill: #ffd700
+}
