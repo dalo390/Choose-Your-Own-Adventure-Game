@@ -2,6 +2,8 @@
     -fx-background-color: #f7ca99;
 }
 .label{
+    -fx-font-size: 25px;
+    -fx-font-family: "8-bit Operator+ 8";
     -fx-background-color: white;
     -fx-border-color: black;
     -fx-border-width: 5 5 5 5;

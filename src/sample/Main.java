@@ -63,11 +63,11 @@ public class Main extends Application {
         title.setWrapText(true);
         title.setPrefWidth(550);
         title.setId("title");
-        try{
-            Font.loadFont(new FileInputStream(new File("D:/Java w IntelliJ/src/sample/rec/gf.ttf")),50);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+
+
+        Font.loadFont(getClass().getResourceAsStream("/sample/rec/gf.ttf"),50);
+
+
         title.setTextAlignment(TextAlignment.CENTER);
         title.setText("Summer Camp");
         layout.setCenter(title);
@@ -125,12 +125,7 @@ public class Main extends Application {
         storyline = new Label();
         storyline.setWrapText(true);
         storyline.setPrefWidth(700);
-        try{
-            final Font f = Font.loadFont(new FileInputStream(new File("D:/Java w IntelliJ/src/sample/rec/gf.ttf")), 25);
-            storyline.setFont(f);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+
         storyline.setTextFill(Color.web("#181818"));
         storyline.setTextAlignment(TextAlignment.CENTER);
         storyline.setText("It was a summer like any other. You and your close friends (Corey, Noel, Jada, and Olivia) are on the annual camping trip program provided by your high school. Only a select few were allowed to go. Luckily everyone in your friend group managed to make it.");
@@ -406,7 +401,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You quickly snatch the flashlight next to you. Suddenly a hatches rips through the cheap tent fabric burying itself in Codey's head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except Codey of course, he's dead). Using your flashlight you easily run to the cabin, pleading for help.");
+        storyline.setText("You quickly snatch the flashlight next to you. Suddenly a hatchet rips through the cheap tent fabric burying itself in Codey's head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except Codey of course, he's dead). Using your flashlight you easily run to the cabin, pleading for help.");
 
         //create and position buttons
         Button button4A = new Button("continue");
