@@ -128,7 +128,7 @@ public class Main extends Application {
 
         storyline.setTextFill(Color.web("#181818"));
         storyline.setTextAlignment(TextAlignment.CENTER);
-        storyline.setText("It was a summer like any other. You and your close friends (Corey, Noel, Jada, and Olivia) are on the annual camping trip program provided by your high school. Only a select few were allowed to go. Luckily everyone in your friend group managed to make it.");
+        storyline.setText("You and your close friends (Corey, Noel, Jada, and Olivia) are on the annual camping trip program provided by your high school.");
         layout.setCenter(storyline);
         primaryStage.setTitle("Summer Camp");
 
@@ -147,7 +147,7 @@ public class Main extends Application {
 
         //create and add S1 storyline
         storyline.setWrapText(true);
-        storyline.setText("On the bus ride there, you find an old granola bar in your backpack");
+        storyline.setText("On the bus ride there, you find a chocolate bar in your backpack. Cookies and cream...");
         layout.setCenter(storyline);
 
         //create and add S1 buttons
@@ -217,18 +217,18 @@ public class Main extends Application {
 
         //create and add S1 storyline
         storyline.setWrapText(true);
-        storyline.setText("There are a couple strangers but that's alright, you'll learn to make do. The bus arrives and you meet Andy, your camping director. He welcomes you but tells the group that this year they have to split everyone into two groups: one to stay in the tents and one to stay in the cabin.");
+        storyline.setText("The bus arrives and you meet Andy, your camping director. He welcomes you but tells the group that this year they have to split everyone into two groups: one to stay in the tents and one to stay in the cabin.");
         layout.setCenter(storyline);
 
         //create and add S1 buttons
-        Button button1 = new Button("You don't wanna deal with the lack of air conditioning all night long. You choose to stay in the cabin.");
+        Button button1 = new Button("It's gonna be too hot in the tents. You choose to stay in the cabin.");
         button1.setWrapText(true);
         button1.setPrefWidth(250);
         button1.setOnAction(e -> {
             clickSound.play();
             buildScene2A(primaryStage);
         });
-        Button button2 = new Button("Your friends think you'll have more fun with more freedom at the tents. You volunteer to join them.");
+        Button button2 = new Button("Your friends think the tents will be more fun. You volunteer to join them.");
         button2.setWrapText(true);
         button2.setPrefWidth(250);
         button2.setOnAction(e -> {
@@ -256,7 +256,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You decide to stay in the cabin after all. You'll miss out on some fun but that's okay, not sleeping in a puddle of sweat all night makes it worth it. Nighttime hits and everyone parts ways. But suddenly 2 hours later... the cabin jerks awake to the sounds of screams. What happened...");
+        storyline.setText("You decide to stay in the cabin after all. You'll miss out on some fun but that's okay. Nighttime hits and everyone parts ways. But suddenly 2 hours later... the cabin jerks awake to the sounds of screams. What happened...");
 
         //create and position buttons
         Button button2 = new Button("continue");
@@ -401,7 +401,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You quickly snatch the flashlight next to you. Suddenly a hatchet rips through the cheap tent fabric burying itself in Codey's head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except Codey of course, he's dead). Using your flashlight you easily run to the cabin, pleading for help.");
+        storyline.setText("You quickly snatch the flashlight next to you. Suddenly a hatchet rips through the cheap tent fabric burying itself in Codey's head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except Codey of course, he's dead). Using your flashlight you easily find your way to the cabin, screaming for help.");
 
         //create and position buttons
         Button button4A = new Button("continue");
