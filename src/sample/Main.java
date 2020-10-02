@@ -33,6 +33,7 @@ public class Main extends Application {
     private MediaPlayer morning;
     private MediaPlayer night;
     private int health;
+    private Player player;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -97,7 +98,7 @@ public class Main extends Application {
         });
 
         //health
-        health = 5;
+        player = new Player();
 
         titleScreen.getStylesheets().add("sample/rec/menu.css");
         primaryStage.setScene(titleScreen);
@@ -133,7 +134,7 @@ public class Main extends Application {
         primaryStage.setTitle("Summer Camp");
 
         //health
-        checkHealth(layout);
+        player.checkHealth(layout);
 
         scene0.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene0);
@@ -162,7 +163,7 @@ public class Main extends Application {
         button2.setWrapText(true);
         button2.setPrefWidth(250);
         button2.setOnAction(e -> {
-            health--;
+            player.healthReduce();
             hurtSound.play();
             clickSound.play();
             granolaScene2(primaryStage);
@@ -174,7 +175,7 @@ public class Main extends Application {
         layout.setBottom(hbox);
 
         //health
-        checkHealth(layout);
+        player.checkHealth(layout);
 
         scene1.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene1);
@@ -203,7 +204,7 @@ public class Main extends Application {
         layout.setBottom(hbox);
 
         //health
-        checkHealth(layout);
+        player.checkHealth(layout);
 
         scene3A.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene3A);
@@ -242,7 +243,7 @@ public class Main extends Application {
         layout.setBottom(hbox);
 
         //health
-        checkHealth(layout);
+        player.checkHealth(layout);
 
         scene1.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene1);
@@ -280,7 +281,7 @@ public class Main extends Application {
         });
 
         //health
-        checkHealth(layout);
+        player.checkHealth(layout);
 
         scene2A.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene2A);
@@ -324,7 +325,7 @@ public class Main extends Application {
         });
 
         //health
-        checkHealth(layout);
+        player.checkHealth(layout);
 
         scene2B.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene2B);
@@ -354,7 +355,7 @@ public class Main extends Application {
         layout.setBottom(hbox);
 
         //health
-        checkHealth(layout);
+        player.checkHealth(layout);
 
         scene3A.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene3A);
@@ -387,7 +388,7 @@ public class Main extends Application {
         layout.setBottom(hbox);
 
         //health
-        checkHealth(layout);
+        player.checkHealth(layout);
 
         scene3B.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene3B);
@@ -415,7 +416,7 @@ public class Main extends Application {
         layout.setBottom(hbox);
 
         //health
-        checkHealth(layout);
+        player.checkHealth(layout);
 
         scene3C.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene3C);
@@ -434,8 +435,10 @@ public class Main extends Application {
         primaryStage.setScene(scene4A);
     }
 
+
+/*
     public void checkHealth(BorderPane layout){
-        if(health == 5){
+        if(player.getHealth() == 5){
             Image hearts = new Image("sample/rec/fiveHearts.png", true);
             ImageView iv = new ImageView(hearts);
             iv.setImage(hearts);
@@ -445,7 +448,7 @@ public class Main extends Application {
             heartBox.setAlignment(Pos.CENTER);
             layout.setTop(heartBox);
         }
-        if(health == 4){
+        if(player.getHealth() == 4){
             Image hearts = new Image("sample/rec/fourHearts.png", true);
             ImageView iv = new ImageView(hearts);
             iv.setImage(hearts);
@@ -456,7 +459,7 @@ public class Main extends Application {
             layout.setTop(heartBox);
         }
     }
-
+*/
     public static void main(String[] args) {
         launch(args);
     }
