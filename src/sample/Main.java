@@ -435,31 +435,6 @@ public class Main extends Application {
         primaryStage.setScene(scene4A);
     }
 
-
-/*
-    public void checkHealth(BorderPane layout){
-        if(player.getHealth() == 5){
-            Image hearts = new Image("sample/rec/fiveHearts.png", true);
-            ImageView iv = new ImageView(hearts);
-            iv.setImage(hearts);
-            iv.setFitHeight(60);
-            iv.setPreserveRatio(true);
-            HBox heartBox = new HBox(iv);
-            heartBox.setAlignment(Pos.CENTER);
-            layout.setTop(heartBox);
-        }
-        if(player.getHealth() == 4){
-            Image hearts = new Image("sample/rec/fourHearts.png", true);
-            ImageView iv = new ImageView(hearts);
-            iv.setImage(hearts);
-            iv.setFitHeight(60);
-            iv.setPreserveRatio(true);
-            HBox heartBox = new HBox(iv);
-            heartBox.setAlignment(Pos.CENTER);
-            layout.setTop(heartBox);
-        }
-    }
-*/
     public static void main(String[] args) {
         launch(args);
     }
