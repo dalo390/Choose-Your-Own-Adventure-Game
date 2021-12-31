@@ -21,6 +21,7 @@
     -fx-border-width: 5 5 5 5;
     -fx-border-radius:10 10 10 10;
     -fx-background-radius:13 13 13 13;
+    -fx-wrap-text: true;
 }
 .button:hover {
     -fx-background-color: #ffd700

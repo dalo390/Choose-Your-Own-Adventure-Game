@@ -129,7 +129,7 @@ public class Main extends Application {
 
         storyline.setTextFill(Color.web("#181818"));
         storyline.setTextAlignment(TextAlignment.CENTER);
-        storyline.setText("You and your close friends (Corey, Noel, Jada, and Olivia) are on the annual camping trip program provided by your high school.");
+        storyline.setText("You and your close friends are on the annual camping trip program provided by your high school.");
         layout.setCenter(storyline);
         primaryStage.setTitle("Summer Camp");
 
@@ -153,14 +153,12 @@ public class Main extends Application {
 
         //create and add S1 buttons
         Button button1 = new Button("Save it for later");
-        button1.setWrapText(true);
         button1.setPrefWidth(250);
         button1.setOnAction(e -> {
             clickSound.play();
             buildScene1(primaryStage);
         });
         Button button2 = new Button("Eat it");
-        button2.setWrapText(true);
         button2.setPrefWidth(250);
         button2.setOnAction(e -> {
             player.healthReduce();
@@ -216,21 +214,19 @@ public class Main extends Application {
         Scene scene1 = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
         layout.setId("morningSky");
 
-        //create and add S1 storyline
+        //create and add S1 storyline0
         storyline.setWrapText(true);
         storyline.setText("The bus arrives and you meet Andy, your camping director. He welcomes you but tells the group that this year they have to split everyone into two groups: one to stay in the tents and one to stay in the cabin.");
         layout.setCenter(storyline);
 
         //create and add S1 buttons
         Button button1 = new Button("It's gonna be too hot in the tents. You choose to stay in the cabin.");
-        button1.setWrapText(true);
         button1.setPrefWidth(250);
         button1.setOnAction(e -> {
             clickSound.play();
             buildScene2A(primaryStage);
         });
         Button button2 = new Button("Your friends think the tents will be more fun. You volunteer to join them.");
-        button2.setWrapText(true);
         button2.setPrefWidth(250);
         button2.setOnAction(e -> {
             clickSound.play();
@@ -340,7 +336,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText(" You hear your friends bang on the cabin door begging you to let them in. \"Someone's trying to kill us!!\"Opening it you find Olivia covered in blood and tears. You quickly realize Corey is missing.");
+        storyline.setText(" You hear your friends bang on the cabin door begging you to let them in. \"Someone's trying to kill us!!\"Opening it you find them covered in blood and tears. You quickly realize one is missing.");
 
         //create and position buttons
         Button button4A = new Button("continue");
@@ -369,7 +365,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You fish your pocket knife out of your belongings as quick as possible. It's small but sharp. Suddenly a hatchet rips through the cheap tent fabric burying itself in Codey's head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except Codey of course, he's dead). You can't see anything in the dark so you trip and die from an axe to the chest.");
+        storyline.setText("You fish your pocket knife out of your belongings as quick as possible. It's small but sharp. Suddenly a hatchet rips through the cheap tent fabric burying itself in someones head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except your dead friend, of course). You can't see anything in the dark so you trip and die from an axe to the chest.");
 
         //create and position buttons
         BorderPane buttonPos = new BorderPane();
@@ -402,7 +398,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You quickly snatch the flashlight next to you. Suddenly a hatchet rips through the cheap tent fabric burying itself in Codey's head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except Codey of course, he's dead). Using your flashlight you easily find your way to the cabin, screaming for help.");
+        storyline.setText("You quickly snatch the flashlight next to you. Suddenly a hatchet rips through the cheap tent fabric burying itself in your friend head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except your dead friend, of course). Using your flashlight you easily find your way to the cabin, screaming for help.");
 
         //create and position buttons
         Button button4A = new Button("continue");
@@ -426,13 +422,302 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene4A = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
+        layout.setId("nightSky");
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("To be continued...");
+        storyline.setText("The lights suddenly go out. Someone has to go check the fuse box.");
+
+        //create and position buttons
+        Button button5A = new Button("Be the hero and go alone");
+        button5A.setPrefWidth(250);
+        button5A.setOnAction(e -> {
+            clickSound.play();
+            buildScene5A(primaryStage);
+        });
+        Button button5B = new Button("Make everyone come with you to check");
+        button5B.setPrefWidth(250);
+        button5B.setOnAction(e -> {
+            clickSound.play();
+            buildScene5B(primaryStage);
+        });
+        HBox hbox = new HBox(30, button5A, button5B);
+        HBox.setMargin(button5A,new Insets(0, 20,50,20));
+        HBox.setMargin(button5B,new Insets(0, 20,50,20));
+        hbox.setAlignment(Pos.CENTER);
+        layout.setBottom(hbox);
+
+        //health
+        player.checkHealth(layout);
 
         scene4A.getStylesheets().add("sample/rec/theme.css");
         primaryStage.setScene(scene4A);
+    }
+
+    public void buildScene5A(Stage primaryStage){
+        Scene oldScene = primaryStage.getScene();
+        BorderPane layout = new BorderPane();
+        Scene scene5A = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
+        layout.setId("nightSky");
+
+        //change the story
+        layout.setCenter(storyline);
+        storyline.setText("You manage to find the fuse box. But it looks like someones here to give you company. And they brought their axe.");
+
+        //create and position buttons
+        Button button6A = new Button("Run to the cabin with your tail between your legs.");
+        button6A.setOnAction(e -> {
+            clickSound.play();
+            buildScene6A(primaryStage);
+        });
+        Button button6B = new Button("Tussle");
+        button6B.setOnAction(e -> {
+            player.healthReduce();
+            hurtSound.play();
+            clickSound.play();
+            buildScene6B(primaryStage);
+        });
+        HBox hbox = new HBox(30, button6A, button6B);
+        HBox.setMargin(button6A,new Insets(0, 20,50,20));
+        HBox.setMargin(button6B,new Insets(0, 20,50,20));
+        hbox.setAlignment(Pos.CENTER);
+        layout.setBottom(hbox);
+
+        //health
+        player.checkHealth(layout);
+
+        scene5A.getStylesheets().add("sample/rec/theme.css");
+        primaryStage.setScene(scene5A);
+    }
+
+    public void buildScene5B(Stage primaryStage){
+        Scene oldScene = primaryStage.getScene();
+        BorderPane layout = new BorderPane();
+        Scene scene5B = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
+        layout.setId("nightSky");
+
+        //change the story
+        layout.setCenter(storyline);
+        storyline.setText("You all manage to find the fuse box. But it looks like he also found the fuse box. Time to make a choice.");
+
+        //create and position buttons
+        Button button6C = new Button("Tussle as a community.");
+        button6C.setOnAction(e -> {
+            player.healthReduce();
+            hurtSound.play();
+            clickSound.play();
+            buildScene6C(primaryStage);
+        });
+        Button button6D = new Button("\"Everybody run for your lives!\"");
+        button6D.setOnAction(e -> {
+            clickSound.play();
+            buildScene6D(primaryStage);
+        });
+        HBox hbox = new HBox(30, button6C, button6D);
+        HBox.setMargin(button6C,new Insets(0, 20,50,20));
+        HBox.setMargin(button6D,new Insets(0, 20,50,20));
+        hbox.setAlignment(Pos.CENTER);
+        layout.setBottom(hbox);
+
+        //health
+        player.checkHealth(layout);
+
+        scene5B.getStylesheets().add("sample/rec/theme.css");
+        primaryStage.setScene(scene5B);
+    }
+
+    public void buildScene6A(Stage primaryStage){
+        Scene oldScene = primaryStage.getScene();
+        BorderPane layout = new BorderPane();
+        Scene scene6A = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
+        layout.setId("nightSky");
+
+        //change the story
+        layout.setCenter(storyline);
+        storyline.setText("You quickly make it back to the cabin. It seems everyone abandoned it and you.");
+
+        //create and position buttons
+        Button button7A = new Button("Hide.");
+        button7A.setOnAction(e -> {
+            clickSound.play();
+            buildScene6C(primaryStage);
+        });
+        Button button7B = new Button("Look for car keys.");
+        button7B.setOnAction(e -> {
+            clickSound.play();
+            buildScene7B(primaryStage);
+        });
+        HBox hbox = new HBox(30, button7A, button7B);
+        HBox.setMargin(button7A,new Insets(0, 20,50,20));
+        HBox.setMargin(button7B,new Insets(0, 20,50,20));
+        hbox.setAlignment(Pos.CENTER);
+        layout.setBottom(hbox);
+
+        //health
+        player.checkHealth(layout);
+
+        scene6A.getStylesheets().add("sample/rec/theme.css");
+        primaryStage.setScene(scene6A);
+    }
+
+    public void buildScene6B(Stage primaryStage){
+        Scene oldScene = primaryStage.getScene();
+        BorderPane layout = new BorderPane();
+        Scene scene6B = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
+        layout.setId("nightSky");
+
+        //change the story
+        layout.setCenter(storyline);
+        storyline.setText("You decided to fight him. You take some damage, and flee to the woods.");
+
+        //create and position buttons
+        Button button7C = new Button("Stop and yell for help.");
+        button7C.setOnAction(e -> {
+            clickSound.play();
+            buildScene7A(primaryStage);
+        });
+        Button button7D = new Button("Keep running");
+        button7D.setOnAction(e -> {
+            clickSound.play();
+            buildScene7A(primaryStage);
+        });
+        HBox hbox = new HBox(30, button7C, button7D);
+        HBox.setMargin(button7C,new Insets(0, 20,50,20));
+        HBox.setMargin(button7D,new Insets(0, 20,50,20));
+        hbox.setAlignment(Pos.CENTER);
+        layout.setBottom(hbox);
+
+        //health
+        player.checkHealth(layout);
+
+        scene6B.getStylesheets().add("sample/rec/theme.css");
+        primaryStage.setScene(scene6B);
+    }
+
+    public void buildScene6C(Stage primaryStage){
+        Scene oldScene = primaryStage.getScene();
+        BorderPane layout = new BorderPane();
+        Scene scene6C = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
+        layout.setId("nightSky");
+
+        //change the story
+        layout.setCenter(storyline);
+        storyline.setText("You decided to fight him. You take some damage, and flee to the woods.");
+
+        //create and position buttons
+        Button button7C = new Button("Stop and yell for help.");
+        button7C.setOnAction(e -> {
+            clickSound.play();
+            buildScene7A(primaryStage);
+        });
+        Button button7D = new Button("Keep running");
+        button7D.setOnAction(e -> {
+            clickSound.play();
+            buildScene7A(primaryStage);
+        });
+        HBox hbox = new HBox(30, button7C, button7D);
+        HBox.setMargin(button7C,new Insets(0, 20,50,20));
+        HBox.setMargin(button7D,new Insets(0, 20,50,20));
+        hbox.setAlignment(Pos.CENTER);
+        layout.setBottom(hbox);
+
+        //health
+        player.checkHealth(layout);
+
+        scene6C.getStylesheets().add("sample/rec/theme.css");
+        primaryStage.setScene(scene6C);
+    }
+
+    public void buildScene6D(Stage primaryStage){
+        Scene oldScene = primaryStage.getScene();
+        BorderPane layout = new BorderPane();
+        Scene scene6D = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
+        layout.setId("nightSky");
+
+        //change the story
+        layout.setCenter(storyline);
+        storyline.setText("Everyone has run off in different directions. You're now left alone in the woods.");
+
+        //create and position buttons
+        Button button7C = new Button("Stop and yell for help");
+        button7C.setOnAction(e -> {
+            clickSound.play();
+            buildScene7A(primaryStage);
+        });
+        Button button7D = new Button("Keep running");
+        button7D.setOnAction(e -> {
+            clickSound.play();
+            buildScene7A(primaryStage);
+        });
+        HBox hbox = new HBox(30, button7C, button7D);
+        HBox.setMargin(button7C,new Insets(0, 20,50,20));
+        HBox.setMargin(button7D,new Insets(0, 20,50,20));
+        hbox.setAlignment(Pos.CENTER);
+        layout.setBottom(hbox);
+
+        //health
+        player.checkHealth(layout);
+
+        scene6D.getStylesheets().add("sample/rec/theme.css");
+        primaryStage.setScene(scene6D);
+    }
+
+    public void buildScene7A(Stage primaryStage){
+        Scene oldScene = primaryStage.getScene();
+        BorderPane layout = new BorderPane();
+        Scene scene7A = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
+        layout.setId("nightSky");
+
+        //change the story
+        layout.setCenter(storyline);
+        storyline.setText("filler.");
+
+        //create and position buttons
+        Button button8A = new Button("Hiding filler");
+        button8A.setPrefWidth(250);
+        button8A.setOnAction(e -> {
+            clickSound.play();
+            buildScene7A(primaryStage);
+        });
+        HBox hbox = new HBox(button8A);
+        HBox.setMargin(button8A,new Insets(0,20,50,20));
+        hbox.setAlignment(Pos.CENTER);
+        layout.setBottom(hbox);
+
+        //health
+        player.checkHealth(layout);
+
+        scene7A.getStylesheets().add("sample/rec/theme.css");
+        primaryStage.setScene(scene7A);
+    }
+
+    public void buildScene7B(Stage primaryStage){
+        Scene oldScene = primaryStage.getScene();
+        BorderPane layout = new BorderPane();
+        Scene scene7B = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
+        layout.setId("nightSky");
+
+        //change the story
+        layout.setCenter(storyline);
+        storyline.setText("Key filler.");
+
+        //create and position buttons
+        Button button8C = new Button("Be the hero and go alone");
+        button8C.setPrefWidth(250);
+        button8C.setOnAction(e -> {
+            clickSound.play();
+            buildScene7B(primaryStage);
+        });
+        HBox hbox = new HBox(button8C);
+        HBox.setMargin(button8C,new Insets(0,20,50,20));
+        hbox.setAlignment(Pos.CENTER);
+        layout.setBottom(hbox);
+
+        //health
+        player.checkHealth(layout);
+
+        scene7B.getStylesheets().add("sample/rec/theme.css");
+        primaryStage.setScene(scene7B);
     }
 
     public static void main(String[] args) {
