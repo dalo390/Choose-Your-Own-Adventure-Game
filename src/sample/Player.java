@@ -43,7 +43,7 @@ public class Player{
 
     public void checkHealth(BorderPane layout){
         if(health == 5){
-            Image hearts = new Image("sample/rec/fiveHearts.png", true);
+            Image hearts = new Image("sample/rec/hearts/fiveHearts.png", true);
             ImageView iv = new ImageView(hearts);
             iv.setImage(hearts);
             iv.setFitHeight(60);
@@ -53,7 +53,47 @@ public class Player{
             layout.setTop(heartBox);
         }
         if(health == 4){
-            Image hearts = new Image("sample/rec/fourHearts.png", true);
+            Image hearts = new Image("sample/rec/hearts/fourHearts.png", true);
+            ImageView iv = new ImageView(hearts);
+            iv.setImage(hearts);
+            iv.setFitHeight(60);
+            iv.setPreserveRatio(true);
+            HBox heartBox = new HBox(iv);
+            heartBox.setAlignment(Pos.CENTER);
+            layout.setTop(heartBox);
+        }
+        if(health == 3){
+            Image hearts = new Image("sample/rec/hearts/threeHearts.png", true);
+            ImageView iv = new ImageView(hearts);
+            iv.setImage(hearts);
+            iv.setFitHeight(60);
+            iv.setPreserveRatio(true);
+            HBox heartBox = new HBox(iv);
+            heartBox.setAlignment(Pos.CENTER);
+            layout.setTop(heartBox);
+        }
+        if(health == 2){
+            Image hearts = new Image("sample/rec/hearts/twoHearts.png", true);
+            ImageView iv = new ImageView(hearts);
+            iv.setImage(hearts);
+            iv.setFitHeight(60);
+            iv.setPreserveRatio(true);
+            HBox heartBox = new HBox(iv);
+            heartBox.setAlignment(Pos.CENTER);
+            layout.setTop(heartBox);
+        }
+        if(health == 1){
+            Image hearts = new Image("sample/rec/hearts/oneHearts.png", true);
+            ImageView iv = new ImageView(hearts);
+            iv.setImage(hearts);
+            iv.setFitHeight(60);
+            iv.setPreserveRatio(true);
+            HBox heartBox = new HBox(iv);
+            heartBox.setAlignment(Pos.CENTER);
+            layout.setTop(heartBox);
+        }
+        if(health == 0){
+            Image hearts = new Image("sample/rec/hearts/zeroHearts.png", true);
             ImageView iv = new ImageView(hearts);
             iv.setImage(hearts);
             iv.setFitHeight(60);
