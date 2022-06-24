@@ -9,27 +9,17 @@ import javafx.scene.layout.HBox;
 public class Player{
 
     private int health;
-    private int fear;
-    private String weapon;
-
+    private boolean flare;
 
     public Player(){
         health = 5;
-        fear = 5;
+        flare = false;
     }
     public void healthReduce(){
         health --;
     }
 
-    public void fearReduce(){
-        fear --;
-    }
-
     public void healthInc(){
-        health ++;
-    }
-
-    public void fearInc(){
         health ++;
     }
 
@@ -37,10 +27,9 @@ public class Player{
         return health;
     }
 
-    public int getFear(){
-        return fear;
-    }
+    public void setHealth(int health) { this.health = health;}
 
+    //change health visual
     public void checkHealth(BorderPane layout){
         if(health == 5){
             Image hearts = new Image("sample/rec/hearts/fiveHearts.png", true);
@@ -103,5 +92,9 @@ public class Player{
             layout.setTop(heartBox);
         }
     }
+
+    public void setFlareTrue(){ flare = true; }
+
+    public boolean getFlare(){ return(flare); }
 
 }
