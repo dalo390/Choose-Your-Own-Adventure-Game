@@ -1,5 +1,5 @@
 .root{
-    -fx-background-color: #f7ca99;
+    -fx-background-color: #000000;
 }
 .label{
     -fx-font-family: "8-bit Operator+ 8 Bold";
@@ -29,12 +29,24 @@
 #nightSky{
     -fx-background-image: url("/sample/rec/nightSky.png");
     -fx-background-repeat: stretch;
-    -fx-background-size: 120%;
+    -fx-background-size: 200%;
     -fx-background-position: center center;
 }
 #morningSky{
     -fx-background-image: url("/sample/rec/morningSky.png");
     -fx-background-repeat: stretch;
-    -fx-background-size: 100%;
+    -fx-background-size: 120%;
+    -fx-background-position: center center;
+}
+#end{
+    -fx-background-image: url("/sample/rec/end.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 150%;
+    -fx-background-position: center center;
+}
+#escape{
+    -fx-background-image: url("/sample/rec/escape.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 150%;
     -fx-background-position: center center;
 }

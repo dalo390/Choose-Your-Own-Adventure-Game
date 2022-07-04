@@ -1185,7 +1185,7 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene10A = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
-        layout.setId("nightSky");
+        layout.setId("escape");
 
         //change the story
         layout.setCenter(storyline);
@@ -1217,7 +1217,7 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene10B = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
-        layout.setId("nightSky");
+        layout.setId("end");
 
         //change the story
         layout.setCenter(storyline);
@@ -1249,7 +1249,7 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene10C = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
-        layout.setId("nightSky");
+        layout.setId("end");
 
         //change the story
         layout.setCenter(storyline);
@@ -1282,7 +1282,7 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene10D = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
-        layout.setId("nightSky");
+        layout.setId("end");
 
         //change the story
         layout.setCenter(storyline);
@@ -1556,7 +1556,7 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene13A = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
-        layout.setId("nightSky");
+        layout.setId("end");
 
         //change the story
         layout.setCenter(storyline);
@@ -1589,7 +1589,7 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene13B = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
-        layout.setId("nightSky");
+        layout.setId("end");
 
         //change the story
         layout.setCenter(storyline);
@@ -1622,7 +1622,7 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene13C = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
-        layout.setId("nightSky");
+        layout.setId("escape");
 
         //change the story
         layout.setCenter(storyline);
@@ -1654,7 +1654,7 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene13D = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
-        layout.setId("nightSky");
+        layout.setId("escape");
 
         //change the story
         layout.setCenter(storyline);
@@ -1686,7 +1686,7 @@ public class Main extends Application {
         Scene oldScene = primaryStage.getScene();
         BorderPane layout = new BorderPane();
         Scene scene13E = new Scene(layout, oldScene.getWidth(), oldScene.getHeight());
-        layout.setId("nightSky");
+        layout.setId("end");
 
         //change the story
         layout.setCenter(storyline);
