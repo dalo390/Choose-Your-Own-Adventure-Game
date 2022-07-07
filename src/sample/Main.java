@@ -32,7 +32,7 @@ public class Main extends Application {
     private AudioClip hurtSound;
     private MediaPlayer morning;
     private MediaPlayer night;
-    private int health;
+    private MediaPlayer end;
     private Player player;
 
     @Override
@@ -87,7 +87,12 @@ public class Main extends Application {
 
         Media nightMusic = new Media(getClass().getResource("/sample/rec/nightSound.mp3").toString());
         night = new MediaPlayer(nightMusic);
-        night.setVolume(.9);
+        night.setVolume(.1);
+
+        Media endMusic = new Media(getClass().getResource("/sample/rec/endSound.mp3").toString());
+        end = new MediaPlayer(endMusic);
+        end.setVolume(.1);
+
 
         morning.setAutoPlay(true);
         morning.setOnEndOfMedia(new Runnable() {
@@ -1206,6 +1211,17 @@ public class Main extends Application {
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
 
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
+
+
         //health
         player.checkHealth(layout);
 
@@ -1237,6 +1253,17 @@ public class Main extends Application {
         HBox.setMargin(button10B,new Insets(0,20,50,20));
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
+
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
+
 
         //health
         player.checkHealth(layout);
@@ -1270,6 +1297,17 @@ public class Main extends Application {
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
 
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
+
+
         //health
         player.setHealth(0);
         player.checkHealth(layout);
@@ -1302,6 +1340,17 @@ public class Main extends Application {
         HBox.setMargin(button10D,new Insets(0,20,50,20));
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
+
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
+
 
         //health
         player.checkHealth(layout);
@@ -1467,6 +1516,7 @@ public class Main extends Application {
         } else{
             button13DE.setOnAction(e -> {
                 clickSound.play();
+                hurtSound.play();
                 buildScene13E(primaryStage);
             });
         }
@@ -1577,6 +1627,16 @@ public class Main extends Application {
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
 
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
+
         //health
         player.setHealth(0);
         player.checkHealth(layout);
@@ -1609,6 +1669,16 @@ public class Main extends Application {
         HBox.setMargin(button13B,new Insets(0,20,50,20));
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
+
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
 
         //health
         player.setHealth(0);
@@ -1643,6 +1713,16 @@ public class Main extends Application {
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
 
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
+
         //health
         player.checkHealth(layout);
 
@@ -1674,6 +1754,16 @@ public class Main extends Application {
         HBox.setMargin(button13D,new Insets(0,20,50,20));
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
+
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
 
         //health
         player.checkHealth(layout);
@@ -1707,6 +1797,16 @@ public class Main extends Application {
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
 
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
+
         //health
         player.setHealth(0);
         player.checkHealth(layout);
@@ -1739,6 +1839,16 @@ public class Main extends Application {
         HBox.setMargin(buttonDeath,new Insets(0,20,50,20));
         hbox.setAlignment(Pos.CENTER);
         layout.setBottom(hbox);
+
+        night.stop();
+        end.play();
+        end.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                end.seek(Duration.ZERO);
+                end.play();
+            }
+        });
 
         //health
         player.checkHealth(layout);

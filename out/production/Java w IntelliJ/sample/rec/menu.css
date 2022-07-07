@@ -1,8 +1,9 @@
 .root{
-    -fx-background-image: url("/sample/rec/summerCamp.png");
+    -fx-background-image: url("/sample/rec/summerCamp.jpg");
     -fx-background-repeat: stretch;
     -fx-background-size: 100%;
     -fx-background-position: center center;
+    -fx-background-color: #330033;
 }
 .text{
     -fx-font-family: "8-bit Operator+ 8 Bold";
