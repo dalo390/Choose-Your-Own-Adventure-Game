@@ -6,23 +6,15 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
-import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
-import javafx.scene.image.Image;
-
-import java.awt.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 
 public class Main extends Application {
@@ -38,8 +30,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-
         BorderPane layout = new BorderPane();
         Scene titleScreen = new Scene(layout, 900,600);
 
@@ -65,6 +55,7 @@ public class Main extends Application {
         title.setWrapText(true);
         title.setPrefWidth(550);
         title.setId("title");
+
 
 
         Font.loadFont(getClass().getResourceAsStream("/sample/rec/gf.ttf"),50);
@@ -96,7 +87,7 @@ public class Main extends Application {
         Media endMusic = new Media(getClass().getResource("/sample/rec/endSound.mp3").toString());
         end = new MediaPlayer(endMusic);
         end.setVolume(.3);
-
+        end.stop();
 
         morning.setAutoPlay(true);
         morning.setOnEndOfMedia(new Runnable() {
@@ -142,8 +133,6 @@ public class Main extends Application {
         storyline.setText("You and your close friends are on the annual camping trip program provided by your high school.");
         layout.setCenter(storyline);
         primaryStage.setTitle("Summer Camp");
-
-        end.stop();
 
         //health
         player.checkHealth(layout);
@@ -1141,6 +1130,7 @@ public class Main extends Application {
         Button button10E = new Button("Try again.");
         button10E.setOnAction(e -> {
             clickSound.play();
+            player.setFlareTrue();
             buildScene10E(primaryStage);
         });
         Button button10F = new Button("Move on.");
