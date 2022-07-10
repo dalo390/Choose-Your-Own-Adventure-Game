@@ -30,6 +30,7 @@ public class Main extends Application {
     private Label storyline;
     private AudioClip clickSound;
     private AudioClip hurtSound;
+    private AudioClip powerSound;
     private MediaPlayer morning;
     private MediaPlayer night;
     private MediaPlayer end;
@@ -81,6 +82,9 @@ public class Main extends Application {
         hurtSound = new AudioClip(getClass().getResource("/sample/rec/hurtSound.mp3").toString());
         hurtSound.setVolume(.2);
 
+        powerSound = new AudioClip(getClass().getResource("/sample/rec/powerSound.mp3").toString());
+        powerSound.setVolume(.2);
+
         Media morningMusic = new Media(getClass().getResource("/sample/rec/morningSound.mp3").toString());
         morning = new MediaPlayer(morningMusic);
         morning.setVolume(.1);
@@ -91,7 +95,7 @@ public class Main extends Application {
 
         Media endMusic = new Media(getClass().getResource("/sample/rec/endSound.mp3").toString());
         end = new MediaPlayer(endMusic);
-        end.setVolume(.1);
+        end.setVolume(.3);
 
 
         morning.setAutoPlay(true);
@@ -118,7 +122,7 @@ public class Main extends Application {
         layout.setId("morningSky");
 
         //create and add S1 buttons
-        Button button1 = new Button("continue");
+        Button button1 = new Button("Continue.");
         button1.setOnAction(e -> {
             clickSound.play();
             granolaScene(primaryStage);
@@ -139,6 +143,8 @@ public class Main extends Application {
         layout.setCenter(storyline);
         primaryStage.setTitle("Summer Camp");
 
+        end.stop();
+
         //health
         player.checkHealth(layout);
 
@@ -158,13 +164,13 @@ public class Main extends Application {
         layout.setCenter(storyline);
 
         //create and add S1 buttons
-        Button button1 = new Button("Save it for later");
+        Button button1 = new Button("Save it for later.");
         button1.setPrefWidth(250);
         button1.setOnAction(e -> {
             clickSound.play();
             buildScene1(primaryStage);
         });
-        Button button2 = new Button("Eat it");
+        Button button2 = new Button("Eat it.");
         button2.setPrefWidth(250);
         button2.setOnAction(e -> {
             player.healthReduce();
@@ -222,7 +228,7 @@ public class Main extends Application {
 
         //create and add S1 storyline0
         storyline.setWrapText(true);
-        storyline.setText("The bus arrives and you meet Andy, your camping director. He welcomes you but tells the group that this year they have to split everyone into two groups: one to stay in the tents and one to stay in the cabin.");
+        storyline.setText("The bus arrives and you meet Oliver, your camping director. He welcomes you but tells the group that this year they have to split everyone into two groups: one to stay in the tents and one to stay in the cabin.");
         layout.setCenter(storyline);
 
         //create and add S1 buttons
@@ -259,10 +265,10 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You decide to stay in the cabin after all. You'll miss out on some fun but that's okay. Nighttime hits and everyone parts ways. But suddenly 2 hours later... the cabin jerks awake to the sounds of screams. What happened...");
+        storyline.setText("You decide to stay in the comfy cabin. Nighttime hits and everyone parts ways. But suddenly an hour later... the cabin jerks awake to the sounds of distant screams. What happened...");
 
         //create and position buttons
-        Button button2 = new Button("continue");
+        Button button2 = new Button("Continue.");
         button2.setOnAction(e -> {
             clickSound.play();
             buildScene3A(primaryStage);
@@ -297,15 +303,17 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You don't split from your friends. You'd rather suffer the heat with them than be bored in the cabin. Night falls. Even though there are multiple tents, you all pile into one tent to tell ghost stories in the sanctity from mosquitoes. But suddenly there's a loud snap of a branch outside. You all freeze.");
+        storyline.setText("You don't split from your friends. You'd rather suffer the heat with them than be bored in the cabin. Night falls. Even though there are multiple tents, you all pile into one tent to tell ghost stories. There is a loud snap of a branch outside. You all freeze.");
 
         //create and position buttons
-        Button button3B = new Button("You grab your pocket knife");
+        Button button3B = new Button("You grab your pocket knife.");
         button3B.setOnAction(e -> {
             clickSound.play();
+            player.healthReduce();
+            hurtSound.play();
             buildScene3B(primaryStage);
         });
-        Button button3C = new Button("You grab the flashlight");
+        Button button3C = new Button("You grab the flashlight.");
         button3C.setOnAction(e -> {
             clickSound.play();
             buildScene3C(primaryStage);
@@ -342,13 +350,14 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText(" You hear your friends bang on the cabin door begging you to let them in. \"Someone's trying to kill us!!\"Opening it you find them covered in blood and tears. You quickly realize one is missing.");
+        storyline.setText(" You hear your friends bang on the cabin door begging you to let them in. \"Someone's trying to kill us!!\"Opening it you find them covered in blood and tears. One of them is missing.");
 
         //create and position buttons
-        Button button4A = new Button("continue");
+        Button button4A = new Button("Continue.");
 
         button4A.setOnAction(e-> {
             clickSound.play();
+            powerSound.play();
             buildScene4A(primaryStage);
         });
         HBox hbox = new HBox(button4A);
@@ -371,14 +380,13 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You fish your pocket knife out of your belongings as quick as possible. It's small but sharp. Suddenly a hatchet rips through the cheap tent fabric burying itself in someones head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except your dead friend, of course). You can't see anything in the dark so you trip and scrape yourself up, but you make it back to the cabin.");
+        storyline.setText("You fish your pocket knife out of your belongings as quick as possible. It's small but sharp. Suddenly a hatchet rips through the cheap tent fabric burying itself in someones head. Everyone flees in the direction of the cabin (except your dead friend, of course). You can't see anything in the dark so you trip and scrape yourself up, but you make it back to the cabin.You reconvene with the other campers and tell them what happened.");
 
         //create and position buttons
-        Button button4A = new Button("continue");
+        Button button4A = new Button("Continue.");
         button4A.setOnAction(e -> {
-            player.healthReduce();
-            hurtSound.play();
             clickSound.play();
+            powerSound.play();
             buildScene4A(primaryStage);
         });
         HBox hbox = new HBox(button4A);
@@ -401,12 +409,13 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You quickly snatch the flashlight next to you. Suddenly a hatchet rips through the cheap tent fabric burying itself in your friend head. All hell breaks loose as everyone tries to flee the tent. Everyone bolts in the direction of the cabin (except your dead friend, of course). Using your flashlight you easily find your way to the cabin, screaming for help.");
+        storyline.setText("You quickly snatch the flashlight next to you. Suddenly a hatchet rips through the cheap tent fabric burying itself in your friend head. Everyone flees in the direction of the cabin (except your dead friend, of course). Using your flashlight you easily find your way to the cabin, screaming for help. You reconvene with the other campers and tell them what happened.");
 
         //create and position buttons
-        Button button4A = new Button("continue");
+        Button button4A = new Button("Continue.");
         button4A.setOnAction(e -> {
             clickSound.play();
+            powerSound.play();
             buildScene4A(primaryStage);
         });
         HBox hbox = new HBox(button4A);
@@ -429,16 +438,16 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("The lights suddenly go out. Someone has to go check the fuse box.");
+        storyline.setText("The cabin lights suddenly go out. Someone has to go check the fuse box.");
 
         //create and position buttons
-        Button button5A = new Button("Be the hero and go alone");
+        Button button5A = new Button("Be the hero and go alone. You don't what any more people getting hurt or killed.");
         button5A.setPrefWidth(250);
         button5A.setOnAction(e -> {
             clickSound.play();
             buildScene5A(primaryStage);
         });
-        Button button5B = new Button("Make everyone come with you to check");
+        Button button5B = new Button("Make everyone come with you to check. Safety in numbers.");
         button5B.setPrefWidth(250);
         button5B.setOnAction(e -> {
             clickSound.play();
@@ -465,7 +474,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You manage to find the fuse box. But it looks like someones here to give you company. And they brought their axe.");
+        storyline.setText("You creep outside of the cabin alone to look for the fuse box. You find it sparking with the metal torn up. One of the sparks illuminates up a human figure for a brief second. It looks like someone's been waiting for you.");
 
         //create and position buttons
         Button button6A = new Button("Run to the cabin with your tail between your legs.");
@@ -473,7 +482,7 @@ public class Main extends Application {
             clickSound.play();
             buildScene6A(primaryStage);
         });
-        Button button6B = new Button("Tussle");
+        Button button6B = new Button("Tussle.");
         button6B.setOnAction(e -> {
             player.healthReduce();
             player.healthReduce();
@@ -502,10 +511,10 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You all manage to find the fuse box. But it looks like he also found the fuse box. Time to make a choice.");
+        storyline.setText("You all stick together to search for the fuse box. You find it sparking with the metal torn up. One of the sparks illuminates up a human figure for a brief second before it plunges a hatchet into another one of your friends. Time to make a choice.");
 
         //create and position buttons
-        Button button6C = new Button("Tussle as a community.");
+        Button button6C = new Button("Tussle as a community. Maybe you can overwhelm him.");
         button6C.setOnAction(e -> {
             player.healthReduce();
             hurtSound.play();
@@ -538,15 +547,15 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You quickly make it back to the cabin. It seems everyone abandoned it and you.");
+        storyline.setText("You sprint back to the cabin. It may be dark but you can tell it has been deserted. It seems everyone abandoned it and you.");
 
         //create and position buttons
-        Button button7A = new Button("Hide.");
+        Button button7A = new Button("Hide. He could find you any second now.");
         button7A.setOnAction(e -> {
             clickSound.play();
             buildScene7A(primaryStage);
         });
-        Button button7B = new Button("Look for car keys.");
+        Button button7B = new Button("Look for car keys. Maybe you can escape this place.");
         button7B.setOnAction(e -> {
             clickSound.play();
             buildScene7B(primaryStage);
@@ -580,7 +589,7 @@ public class Main extends Application {
             clickSound.play();
             buildScene7C(primaryStage);
         });
-        Button button7D = new Button("Keep running");
+        Button button7D = new Button("Keep running.");
         button7D.setOnAction(e -> {
             player.healthReduce();
             hurtSound.play();
@@ -612,7 +621,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You decided to fight him. You take some damage, and flee to the woods.");
+        storyline.setText("You decided to fight him, but the axe is too dangerous. You take some damage, and flee to the woods.");
 
         //create and position buttons
         Button button7C = new Button("Stop and yell for help.");
@@ -620,7 +629,7 @@ public class Main extends Application {
             clickSound.play();
             buildScene7C(primaryStage);
         });
-        Button button7D = new Button("Keep running");
+        Button button7D = new Button("Keep running.");
         button7D.setOnAction(e -> {
             player.healthReduce();
             hurtSound.play();
@@ -652,15 +661,15 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("Everyone has run off in different directions. You're now left alone in the woods.");
+        storyline.setText("Everyone has run off in different directions. No one wants to end up dead like the other two. In the chaos you end up left alone in the middle of the woods. Seems like you lost the killer.");
 
         //create and position buttons
-        Button button7C = new Button("Stop and yell for help");
+        Button button7C = new Button("Stop and yell for help.");
         button7C.setOnAction(e -> {
             clickSound.play();
             buildScene7C(primaryStage);
         });
-        Button button7D = new Button("Keep running");
+        Button button7D = new Button("Keep running.");
         button7D.setOnAction(e -> {
             player.healthReduce();
             hurtSound.play();
@@ -692,7 +701,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("There's a killer on the loose, why put yourself in danger? Now where to hide...");
+        storyline.setText("There's a killer on the loose; why put yourself in danger? Now where to hide...");
 
         //create and position buttons
         Button button8A = new Button("Under the bed.");
@@ -726,7 +735,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You need to escape and the fastest way out is by car. Where do you check for the keys?");
+        storyline.setText("You need to escape and the fastest way out is by car. You remember Oliver droning on about how nice his car was. It's gotta be around here somewhere. Where do you check for the keys?");
 
         //create and position buttons
         Button button8C = new Button("Check the nightstand.");
@@ -763,7 +772,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("The counselor hears your cries for help. What do you do now that you've found help?");
+        storyline.setText("The trees begin to rustle. Oliver bursts out covered in dirt and scratches. \"I don't know where the others went but I have a car nearby. We can get out of here.\" What do you do now that you've found help?");
 
         //create and position buttons
         Button button9D = new Button("Go to the car together to escape.");
@@ -797,10 +806,10 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You run into a bear trap. Luckily you never skip leg day so you manage to break free, but still damaged. You eventually encounter an old fire-tower. Surely there could be something helpful up there.");
+        storyline.setText("You run into a bear trap. Luckily you never skip leg day so you manage to break free, but still damaged. You eventually encounter an old fire-tower. Surely there could be something helpful up there, but the ladder rungs look old.");
 
         //create and position buttons
-        Button button9F = new Button("Risk the climb up.");
+        Button button9F = new Button("Risk the climb up anyway.");
         button9F.setOnAction(e -> {
             player.healthReduce();
             player.healthReduce();
@@ -812,7 +821,7 @@ public class Main extends Application {
                 buildScene9F(primaryStage);
             }
         });
-        Button button9G = new Button("Give up.");
+        Button button9G = new Button("The risk is too high. Give up. ");
         button9G.setOnAction(e -> {
             clickSound.play();
             buildScene9G(primaryStage);
@@ -838,7 +847,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("The heavy thuds fade into the background as the killer walks away.");
+        storyline.setText("Heavy thuds fade into the background as the killer walks away.");
 
         //create and position buttons
         Button button9D = new Button("Continue.");
@@ -866,7 +875,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("The heavy thuds grow louder as the killer approaches.");
+        storyline.setText("Heavy thuds grow louder as the killer approaches.");
 
         //create and position buttons
         Button button9A = new Button("Continue.");
@@ -985,15 +994,15 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You help the counselor fight off the killer, but not without taking some damage. You bought yourselves enough time to start the car, but the killer won't stay down for long. Suddenly, you see your friends running in from the treeline screaming for you to wait. You can quickly tell there's not enough room for everyone.");
+        storyline.setText("You help Oliver fight off the killer, but not without taking some damage. You bought yourselves enough time to start the car, but the killer won't stay down for long. Suddenly, you see your friends running in from the treeline screaming for you to wait. You can quickly tell there's not enough room for everyone.");
 
         //create and position buttons
-        Button button10A = new Button("Wait for your friends.");
+        Button button10A = new Button("You can't leave them. Wait for your friends.");
         button10A.setOnAction(e -> {
             clickSound.play();
             buildScene10A(primaryStage);
         });
-        Button button10B = new Button("Drive off with only the counselor.");
+        Button button10B = new Button("There's no time to waste. Drive off with only Oliver.");
         button10B.setOnAction(e -> {
             clickSound.play();
             buildScene10B(primaryStage);
@@ -1018,16 +1027,16 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You leave the counselor to die, he's the perfect distraction for you to make your getaway. Suddenly, you see your friends running in from the treeline screaming for you to wait. You can quickly tell there's not enough room for everyone");
+        storyline.setText("You leave Oliver to die. He's the perfect distraction for you to make your getaway. You start the engine. Suddenly, your friends running in from the treeline screaming for you to wait. You're relieved to see them alive, but there's no way there's enough room for everyone");
 
         //create and position buttons
-        Button button10C = new Button("Wait for your friends.");
+        Button button10C = new Button("You can't leave them. Wait for your friends.");
         button10C.setOnAction(e -> {
             hurtSound.play();
             clickSound.play();
             buildScene10C(primaryStage);
         });
-        Button button10D = new Button("Drive off without them.");
+        Button button10D = new Button("There's no time to waste. Drive off alone.");
         button10D.setOnAction(e -> {
             clickSound.play();
             buildScene10D(primaryStage);
@@ -1052,10 +1061,10 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You quickly make your way to the car to escape. You find the car, but so has the killer. Luckily, the counselor is also here; the two begin to struggle in a fight.");
+        storyline.setText("You quickly make your way to the car to escape. You find the car, but so has the killer. Luckily, Oliver managed to find his way here too; the two begin to struggle in a fight.");
 
         //create and position buttons
-        Button button9B= new Button("Help the counselor.");
+        Button button9B= new Button("Help Oliver.");
         button9B.setOnAction(e -> {
             player.healthReduce();
             hurtSound.play();
@@ -1095,12 +1104,12 @@ public class Main extends Application {
         storyline.setText("You decide to go look for your friends. Where should you check?");
 
         //create and position buttons
-        Button button12A = new Button("Bath house.");
+        Button button12A = new Button("The campground bathhouse. It seems likely the safest remaining camp structure.");
         button12A.setOnAction(e -> {
             clickSound.play();
             buildScene12A(primaryStage);
         });
-        Button button12B = new Button("Tent site.");
+        Button button12B = new Button("Tent site. It's a little far from what you can remember of the camp map, but how likely would it be for the killer to go there again?");
         button12B.setOnAction(e -> {
             clickSound.play();
             buildScene12B(primaryStage);
@@ -1129,12 +1138,12 @@ public class Main extends Application {
         storyline.setText("The old ladder rungs give away below you causing you to plummet to the ground.");
 
         //create and position buttons
-        Button button10E = new Button(" There's gotta be something up there. Try again.");
+        Button button10E = new Button("Try again.");
         button10E.setOnAction(e -> {
             clickSound.play();
             buildScene10E(primaryStage);
         });
-        Button button10F = new Button("It's not worth the risk. Move on.");
+        Button button10F = new Button("Move on.");
         button10F.setOnAction(e -> {
             clickSound.play();
             buildScene10F(primaryStage);
@@ -1194,7 +1203,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("Your friends run up to the car. Luckily the counselor is able to help everyone cram properly like Tetris. You speed away, saving everyones life.");
+        storyline.setText("Your friends run up to the car. Luckily Oliver is able to use his years of leadership to help everyone cram properly. Once everyone is inside, you speed away. You managed to save everyone's life.");
 
         //create and position buttons
         Button button10A = new Button("Try Again.");
@@ -1237,7 +1246,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You drive off with the counselor. Saving one life is enough, the rest of them will figure it out...or not. You witness the killer taking them out one by one in the rear-view.");
+        storyline.setText("You drive off with Oliver. Saving the camp director is enough, the rest of them will figure it out...or not. You witness the killer taking them out one by one in the rear-view.");
 
         //create and position buttons
         Button button10B = new Button("Try Again.");
@@ -1324,7 +1333,8 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You drive away, hitting a couple of your friends as they attempt to get to the car. You escape the camp as a killer. But at least you made it out.");
+        storyline.setText("It's too dangerous to wait so you drive away. A couple of your friends attempt to get in the car, but you don't stop. Some of them are run over in the process. But at least you made it out.");
+
 
         //create and position buttons
         Button button10D = new Button("Try Again.");
@@ -1367,7 +1377,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You successfully make it to the top and find a flare gun. The bright red lights up the sky as you fire it to signal for help. Hopefully, the authorities see it. What's your next step?");
+        storyline.setText("You successfully make it to the top and find a flare gun. The sky flashes bright red as you fire the flare to signal for help. Hopefully, the authorities see it. What's your next step?");
 
         //create and position buttons
         Button button11A = new Button("Go find your friends.");
@@ -1438,12 +1448,12 @@ public class Main extends Application {
         storyline.setText("You should meet back up with your friends. Where do you look?");
 
         //create and position buttons
-        Button button12A = new Button("The campground bathhouse.");
+        Button button12A = new Button("The campground bathhouse. It seems likely the safest remaining camp structure.");
         button12A.setOnAction(e -> {
             clickSound.play();
             buildScene12A(primaryStage);
         });
-        Button button12B = new Button("The tents.");
+        Button button12B = new Button("The tents. It's a little far from what you can remember of the camp map, but how likely would it be for the killer to go there again?");
         button12B.setOnAction(e -> {
             clickSound.play();
             buildScene12B(primaryStage);
@@ -1470,7 +1480,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("Maybe there's a good place to hide around here. You go a little further and find a path leading to a small town with a sign that says \"Welcome to Starville\".");
+        storyline.setText("Maybe there's a good place to hide around here. You go a little further and find a worn path. The trail leads to a small town with a sign that says \"Welcome to Starville\".");
 
         //create and position buttons
         Button button12C = new Button("Enter Starville in search of help.");
@@ -1504,10 +1514,10 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("You find your friends hiding in the bathhouse and join them. Turns out none of them were able to find a way to call for help and were hoping you had figured something out.");
+        storyline.setText("You find your friends hiding in the bathhouse and join them. Turns out none of them were able to find a way to call for help. They were hoping you had done something.");
 
         //create and position buttons
-        Button button13DE = new Button("continue");
+        Button button13DE = new Button("Continue.");
         if(player.getFlare()){
             button13DE.setOnAction(e -> {
                 clickSound.play();
@@ -1780,7 +1790,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("However, you were never able to get to the top of the fire tower. The police never arrive, and you are all eventually killed. If only you had made it to the top...");
+        storyline.setText("However, you were never able to get to the top of that distant fire tower. Maybe you could've found help up there. The killer eventually finds you all hiding. No one makes it out alive.");
 
         //create and position buttons
         Button button13E = new Button("Try Again.");
@@ -1823,7 +1833,7 @@ public class Main extends Application {
 
         //change the story
         layout.setCenter(storyline);
-        storyline.setText("Bad choice. You took too much damage and failed to survive.");
+        storyline.setText("Bad choice. You took too much damage and are no longer able to continue.");
 
         //create and position buttons
         Button buttonDeath = new Button("Try Again.");
